@@ -16,35 +16,69 @@ const render = require("./lib/htmlRenderer");
 
 const team = []
 
-function startTeamCreation (){
+function startTeamCreation() {
 
-    inquirer.prompt([{
-        type: "input",
-        name: "name",
-        message: "What is the manager's name?"
-},
-{
-    type: "input",
-    id: "id",
-    message: "What is the manager's name?"
-},
-{
-    type: "input",
-    email: "email",
-    message: "What is the manager's name?"
-},
-{
-    type: "input",
-    officeNumber: "officeNumber",
-    message: "What is the manager's name?"
-}
-]).then(managerDetails => {
-    const manager = new Manager(managerDetails.name, managerDetails.id, managerDetails.email, managerDetails.officeNumber)
-    team.push(manager)
-})
+    function addManager() {
+        inquirer.prompt([{
+            type: "input",
+            name: "name",
+            message: "What is the manager's name?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the manager's id?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the manager's email?"
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is the manager's office number?"
+        }
+        ]).then(managerDetails => {
+            const manager = new Manager(managerDetails.name, managerDetails.id, managerDetails.email, managerDetails.officeNumber)
+            team.push(manager);
+            selectNextTeamMember()
+        })
+    }
 
+    function selectNextTeamMember() {
+        inquirer.prompt([{
+            type: "list",
+            name: "nextMember",
+            message: "What is the role of the next team member?",
+            choices: ["engineer", "intern", "none"]
+        }]).then(nextMember => {
+            if (nextMember.nextMember === "engineer") {
+                addNewEngineer()
+            } else if (nextMember.nextMember === "intern") {
+                addNewIntern()
+            } else {
+                createHtml()
+            }
+        })
+    }
+
+
+    function addNewEngineer() {
+
+    }
+    function addNewIntern() {
+
+    }
+
+    function createHtml() {
+
+    }
+
+    addManager();
 }
- startTeamCreation()
+
+startTeamCreation()
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
