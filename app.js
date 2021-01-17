@@ -65,10 +65,58 @@ function startTeamCreation() {
 
 
     function addNewEngineer() {
-
+        inquirer.prompt([{
+            type: "input",
+            name: "name",
+            message: "What is the engineer's name?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the engineer's id?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the engineer's email?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is the engineer's github?"
+        }
+        ]).then(engineerDetails => {
+            const engineer = new Engineer(engineerDetails.name, engineerDetails.id, engineerDetails.email, engineerDetails.github)
+            team.push(engineer);
+            selectNextTeamMember()
+        })
     }
     function addNewIntern() {
-
+        inquirer.prompt([{
+            type: "input",
+            name: "name",
+            message: "What is the intern's name?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the intern's id?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the intern's email?"
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is the intern's chool?"
+        }
+        ]).then(internDetails => {
+            const intern = new Intern(internDetails.name, internDetails.id, internDetails.email, internDetails.school)
+            team.push(intern);
+            selectNextTeamMember()
+        })
     }
 
     function createHtml() {
