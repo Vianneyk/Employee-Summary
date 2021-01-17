@@ -72,7 +72,10 @@ function startTeamCreation() {
     }
 
     function createHtml() {
-
+        if (fs.existsSync(OUTPUT_DIR) === false){
+            fs.mkdirSync(OUTPUT_DIR)
+        }
+        fs.writeFileSync(outputPath, render(team))
     }
 
     addManager();
