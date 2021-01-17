@@ -26,9 +26,7 @@ It will install inquirer, and jest for tests.
 
 To start, run on your command line `node app.js`, this will prompt a series of questions that will be used to build your team. To start you will be asked to enter the Manager information such as name, email, id and office number. Once Manager information is completed user can chose between enter a new Engineer, Intern, or not enter more employees. When selected Engineer the required information are name, email, id, and GitHub username. When selected Intern the required information are name, email, id, and school name. Once you have completed to enter all your team information a new `team.html` file will be created and saved in the `output` directory.
 
-Click on the link below to watch a video of a new team profile been created.
-
-[Click here](https://youtu.be/JtOfmrDuqSE)
+[Click here](https://youtu.be/JtOfmrDuqSE) to watch a video of a new team profile been created.
 
 
 ## Tests
